@@ -17,8 +17,12 @@ const App = () => {
           }
       ))
   }
+
+  function hold(id) {
+    console.log(id)
+  }
   
-  const diceElements = dice.map(dieObj => <Die key={dieObj.id} {...dieObj} />)
+  const diceElements = dice.map(dieObj => <Die key={dieObj.id} {...dieObj} hold={hold} />)
 
   return (
     <main className=" flex justify-center mt-10">
