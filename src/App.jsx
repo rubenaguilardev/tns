@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Die from "./components/Die"
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
 
   return (
     <main className=" flex justify-center mt-10">
+      {gameWon && <Confetti />}
       <div className="max-w-80 flex flex-col bg-[#F5F5F5] p-9 rounded-[10px] shadow-2xl">
         <div className="text-center mb-7">
           <h1 className="font-bold text-[1.6rem] tracking-tight">Tenzies</h1>
