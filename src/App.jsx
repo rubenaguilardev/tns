@@ -18,8 +18,12 @@ const App = () => {
       ))
   }
 
+  function rollDice() {
+    setDice(oldDice => oldDice.map(die => die.isHeld ? die : {...die, value: Math.ceil(Math.random() * 6)}))
+  }
+
   function hold(id) {
-    setDice(oldDice => dice.map(die => die.id === id ? {...die, isHeld: !die.isHeld} : die))
+    setDice(oldDice => oldDice.map(die => die.id === id ? {...die, isHeld: !die.isHeld} : die))
   }
   
   const diceElements = dice.map(dieObj => <Die key={dieObj.id} {...dieObj} hold={hold} />)
@@ -36,7 +40,7 @@ const App = () => {
         </div>
         <div className="flex justify-center mt-6">
           <button 
-            onClick={() => setDice(generateAllNewDice())}
+            onClick={rollDice}
             className="h-9 w-24 text-white font-bold bg-[#5035FF] rounded-sm cursor-pointer shadow-lg"
           >
             Roll
