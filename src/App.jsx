@@ -6,6 +6,8 @@ const App = () => {
 
   const [dice, setDice] = useState(generateAllNewDice())
 
+  const gameWon = dice.every(die => die.isHeld) && dice.every(die => die.value === dice[0].value)
+
   function generateAllNewDice() {
     return new Array(10)
       .fill(0)
@@ -41,9 +43,9 @@ const App = () => {
         <div className="flex justify-center mt-6">
           <button 
             onClick={rollDice}
-            className="h-9 w-24 text-white font-bold bg-[#5035FF] rounded-sm cursor-pointer shadow-lg"
+            className="h-9 w-auto py-1.5 px-5 whitespace-nowrap text-white font-bold bg-[#5035FF] rounded-sm cursor-pointer shadow-lg"
           >
-            Roll
+            {gameWon ? 'New Game' : 'Roll'}
           </button>
         </div>
       </div>
