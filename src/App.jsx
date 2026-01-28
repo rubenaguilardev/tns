@@ -12,14 +12,14 @@ const App = () => {
       .map(() => (
           {
             value: Math.ceil(Math.random() * 6), 
-            isHeld: true,
+            isHeld: false,
             id: nanoid()
           }
       ))
   }
 
   function hold(id) {
-    console.log(id)
+    setDice(oldDice => dice.map(die => die.id === id ? {...die, isHeld: !die.isHeld} : die))
   }
   
   const diceElements = dice.map(dieObj => <Die key={dieObj.id} {...dieObj} hold={hold} />)
