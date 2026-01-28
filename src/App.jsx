@@ -12,15 +12,13 @@ const App = () => {
       .map(() => (
           {
             value: Math.ceil(Math.random() * 6), 
-            isHeld: false,
+            isHeld: true,
             id: nanoid()
           }
       ))
   }
   
-  const diceElements = dice.map(dieObj => <Die key={dieObj.id} value={dieObj.value} />)
-
-  console.log(dice)
+  const diceElements = dice.map(dieObj => <Die key={dieObj.id} {...dieObj} />)
 
   return (
     <main className=" flex justify-center mt-10">
